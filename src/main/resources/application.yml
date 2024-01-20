@@ -1,0 +1,54 @@
+server:
+  port: 8080
+  
+
+spring:
+  application:
+    name: template
+# ==============================================================
+# = DBMS postgresql Parameters
+# ==============================================================
+  datasource:
+# ==============================================================
+# = dev
+# ==============================================================  
+    username: root
+    password: root
+    url: jdbc:postgresql://127.0.0.1:5432/template_db  
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: "org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl"
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    show-sql: true
+  sql:
+    init:
+      mode: always
+      platform: postgresql
+      password: laboratorio
+      username: laboratorio
+    
+# ==============================================================
+# = Parametri Sicurezza JWT 
+# ==============================================================
+sicurezza:
+    uri: /authentication
+    refresh: /refresh
+    header: Authorization
+    prefix: Bearer 
+    expiration: 86400
+    secret: pippo_pluto
+
+ 
+
+pm.url: "http://127.0.0.1:9091/template-be"
+app_name: "TEMPLATE"
+app_role: "USER"
+attivation_page: "http://localhost:4200/authentication/activation/"
+
